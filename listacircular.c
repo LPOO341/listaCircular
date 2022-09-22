@@ -1,5 +1,5 @@
-// Practica 2 Listas Enlazadas Jorge Omar Torres Sosa
-// Inserting and deleting nodes in a list
+// Practica 2 Listas Circulares Jorge Omar Torres Sosa
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -49,18 +49,27 @@ do
 				Inicializar(&nodoInicio, dato);
 			}
 			else{
-				InsertAtEndInCLL(&nodoInicio, dato);
-				
+				InsertAtEndInCLL(&nodoInicio, dato);	
 			}
 			PrintCircularListData(nodoInicio);
 			break;
 		case 3:
-			DeleteFrontNodeFromCLL(&nodoInicio);
-			PrintCircularListData(nodoInicio);
+			if(CircularListLength(nodoInicio) > 1)
+			{
+				DeleteFrontNodeFromCLL(&nodoInicio);
+				PrintCircularListData(nodoInicio);
+			}
+			else
+				printf("No puedes eleminar el ultimo elemento\n");
 			break;
 		case 4:
-			DeleteLastNodeFromCLL(&nodoInicio);
-			PrintCircularListData(nodoInicio);
+			if(CircularListLength(nodoInicio) > 1)
+			{
+				DeleteLastNodeFromCLL(&nodoInicio);
+				PrintCircularListData(nodoInicio);
+			}
+			else
+				printf("No puedes eleminar el ultimo elemento\n");
 			break;
 		case 5:
 			printf("El tamaño es: %d\n", CircularListLength(nodoInicio));
@@ -73,7 +82,7 @@ do
 			break;
 	}
 		
-	} while (opcion != 7);
+	} while (opcion != 6);
 	
 	return 0;
 }
@@ -205,8 +214,8 @@ void DeleteFrontNodeFromCLL(struct CLLNode **head)
 
 int obtenerEntero(char mensaje[]) // Elimina la redundacia al obtener los int
 {
-        int var;
-        printf("\n%s", mensaje);
-        scanf("%d", &var);
-        return var;
+	int var;
+	printf("\n%s", mensaje);
+	scanf("%d", &var);
+	return var;
 }
